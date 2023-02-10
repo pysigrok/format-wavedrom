@@ -1,0 +1,24 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "pysigrok-format-wavedrom"
+authors = [{name = "Scott Shawcroft", email = "scott@tannewt.org"}]
+license = {file = "LICENSE"}
+classifiers = ["License :: OSI Approved :: MIT License"]
+dynamic = ["version", "description"]
+dependencies = [
+    "pysigrok >= 0.4.0",
+    "pyvcd < 0.4.0"
+]
+requires-python = ">=3.7"
+
+[tool.flit.module]
+name = "pysigrok_wavedrom"
+
+[project.urls]
+Home = "https://github.com/pysigrok/format-wavedrom"
+
+[project.entry-points."pysigrok.output_format"]
+vcd = "pysigrok_wavedrom:WavedromOutput"
