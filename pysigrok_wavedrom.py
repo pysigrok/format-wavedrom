@@ -1,6 +1,6 @@
 """PySigrok driver for wavedrom"""
 
-__version__ = "0.0.1"
+__version__ = "0.0.2"
 
 import io
 from operator import itemgetter
@@ -55,7 +55,7 @@ class WavedromOutput(Output):
 
     def _flush_annotations(self):
         for source in self.annotation_buffers:
-            colors = DEFAULT_COLORS[source.id]
+            colors = DEFAULT_COLORS.get(source.id, {})
             for i, row in enumerate(self.annotation_rows[source]):
                 signal = self.annotation_signals[source][i + 1]
                 signal["wave"].append("x")
